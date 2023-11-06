@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
