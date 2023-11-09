@@ -174,6 +174,7 @@ struct DetailView: View {
             
             
         }
+        .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
         .padding(.bottom, 64)
         .overlay(alignment: .bottom){
@@ -217,3 +218,4 @@ struct DetailView: View {
 #Preview {
     DetailView()
 }
+

@@ -5,12 +5,13 @@
 //  Created by Ariel Merino on 04/11/23.
 //
 
-import SwiftUI
+import SwiftUI 
 
 
 
 struct ExploreView: View {
     @State private var showDestinationSearchView = false
+    @StateObject var viewModel = ExploreViewModel(service: ExploreService())
     
     var body: some View {
         NavigationStack{
@@ -40,9 +41,7 @@ struct ExploreView: View {
                 }
                 .navigationDestination(for: Int.self) { listing in
                     DetailView()
-                        .navigationBarBackButtonHidden()
                 }
-                ToolBarDefaultView()
             }
         }
     }

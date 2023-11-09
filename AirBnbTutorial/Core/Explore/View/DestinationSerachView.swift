@@ -29,16 +29,32 @@ struct DestinationSerachView: View {
     var body: some View {
         VStack(alignment: .leading){
             
-            Button{
-                withAnimation(.snappy){
-                    show.toggle()
+            HStack {
+                Button{
+                    withAnimation(.snappy){
+                        show.toggle()
+                    }
+                }label: {
+                    Image(systemName: "xmark.circle")
+                        .imageScale(.large)
+                        .foregroundStyle(.black)
                 }
-            }label: {
-                Image(systemName: "xmark.circle")
-                    .imageScale(.large)
+                .padding(.horizontal, 20)
+                
+                Spacer()
+                
+                if !destination.isEmpty {
+                    Button("Clear"){
+                        destination = ""
+                    }
                     .foregroundStyle(.black)
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 14)
+                }
+                
+                
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal)
             
             if selectedOption == .location{
                 
@@ -64,11 +80,7 @@ struct DestinationSerachView: View {
                             .foregroundColor(Color(.systemGray4))
                     }
                 }
-                .padding()
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding()
-                .shadow(radius: 10)
+                .modifier(CollapsableDestinationViewModifier())
                 .onTapGesture {
                     selectedOption = .location
                 }
@@ -98,6 +110,7 @@ struct DestinationSerachView: View {
                             displayedComponents: [.date]
                         )
                     }
+                    
                     Divider()
                     
                     HStack{
@@ -109,12 +122,7 @@ struct DestinationSerachView: View {
                         )
                     }
                 }
-                .padding()
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding()
-                .shadow(radius: 12)
-                
+                .modifier(CollapsableDestinationViewModifier())
             }else {
                 ColapsedPickerView(
                     title: "When",
@@ -145,11 +153,8 @@ struct DestinationSerachView: View {
                     }
                     
                 }
-                .padding()
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding()
-                .shadow(radius: 12)
+                .modifier(CollapsableDestinationViewModifier())
+
             } else {
                 ColapsedPickerView(
                     title: "Who",
@@ -194,5 +199,16 @@ struct ColapsedPickerView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
         .shadow(radius: 12)
+    }
+}
+
+struct CollapsableDestinationViewModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content                
+            .padding()
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding()
+            .shadow(radius: 10)
     }
 }

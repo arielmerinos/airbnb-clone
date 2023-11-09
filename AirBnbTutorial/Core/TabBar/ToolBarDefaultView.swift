@@ -10,7 +10,7 @@ import SwiftUI
 struct ToolBarDefaultView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 2.0){
-            NavigationLink(destination: WishListView()){
+            NavigationLink(destination: WishlistView()){
                 VStack(spacing: 0){
                     Image(systemName: "heart.fill")
                     Spacer()

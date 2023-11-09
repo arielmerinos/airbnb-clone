@@ -13,7 +13,7 @@ struct ListingImageCarouselView: View {
         "listing-2",
         "listing-3",
         "listing-4",
-    ]
+    ].shuffled()
     
     var body: some View {
         TabView{
